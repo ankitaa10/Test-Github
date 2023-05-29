@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+   
+      
+      "lib": ["es6", "dom"],
+      "types": ["reflect-metadata"],
+     
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+  
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
