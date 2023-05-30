@@ -1,8 +1,3 @@
-
-
-
-
-
 import { injectable, inject, Container } from 'inversify';
 import "reflect-metadata";
 
@@ -54,54 +49,51 @@ log(message: string): void {
 
 class LoggerContainerService {
 
-  private logger: ILogger;
+ private logger: ILogger;
 
- 
 
-  constructor(@inject('ILogger') logger: ILogger) {
 
-    this.logger = logger;
+constructor(@inject('ILogger') logger: ILogger) {
 
-  }
+this.logger = logger;
 
- 
+ }
 
-  public logMessage(message: string): void {
 
-    this.logger.log(message);
 
-  }
+ public logMessage(message: string): void {
+
+ this.logger.log(message);
+
+ }
 
 }
 
- 
-
-// Configure the application
 
 const container = new Container();
 
-const useFileLogger = true; // Change this value to switch between ConsoleLogger and FileLogger
+const useFileLogger = true; 
 
- 
+
 
 if (useFileLogger) {
 
-  container.bind<ILogger>('ILogger').to(FileLogger);
+ container.bind<ILogger>('ILogger').to(FileLogger);
 
 } else {
 
-  container.bind<ILogger>('ILogger').to(ConsoleLogger);
+ container.bind<ILogger>('ILogger').to(ConsoleLogger);
 
 }
 
- 
 
-// Resolve the dependencies and use the LoggerContainerService
+
+
 
 const loggerContainerService = container.resolve<LoggerContainerService>(LoggerContainerService);
 
 loggerContainerService.logMessage('Logging output');
 
- 
+
 
 
